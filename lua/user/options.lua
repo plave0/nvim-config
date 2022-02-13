@@ -2,6 +2,7 @@ local o = vim.opt
 
 o.backup = false		
 o.swapfile = false
+o.path = ".,,"
 
 o.shiftwidth = 4
 o.tabstop = 2
