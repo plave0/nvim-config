@@ -32,7 +32,7 @@ return packer.startup(function(use)
 
   use "wbthomason/packer.nvim"
   use "nvim-lua/popup.nvim"
-
+	use 'folke/tokyonight.nvim'
   if PACKER_BOOTSTRAP then
     require("packer").sync()
   end
