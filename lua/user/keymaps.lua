@@ -49,3 +49,9 @@ keymap("x", "J", ":move '>+1<CR>gv-gv", opts)
 keymap("x", "K", ":move '<-2<CR>gv-gv", opts)
 keymap("x", "<A-j>", ":move '>+1<CR>gv-gv", opts)
 keymap("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
+
+-- Telescope maps
+keymap("n", "<leader>ff", ":lua require('telescope.builtin').find_files()<cr>", opts)
+keymap("n", "<leader>fg", ":lua require('telescope.builtin').live_grep()<cr>", opts)
+keymap("n", "<leader>fb", ":lua require('telescope.builtin').buffers()<cr>", opts)
+keymap("n", "<leader>fh", ":lua require('telescope.builtin').help_tags()<cr>", opts)
