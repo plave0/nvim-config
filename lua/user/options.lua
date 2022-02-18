@@ -12,6 +12,7 @@ o.smartindent = true
 o.ignorecase = true
 o.showtabline = 2
 o.signcolumn = "yes"
+o.updatetime = 200
 
 o.splitbelow = true
 o.splitright = true
@@ -45,3 +46,4 @@ local diag_conf = {
 }
 
 vim.diagnostic.config(diag_conf)
+
