@@ -1,5 +1,4 @@
-local fn = vim.fn
-
+local fn = vim.fn 
 -- Automatically install packer
 local install_path = fn.stdpath "data" .. "/site/pack/packer/start/packer.nvim"
 if fn.empty(fn.glob(install_path)) > 0 then
@@ -33,6 +32,17 @@ return packer.startup(function(use)
   use "wbthomason/packer.nvim"
   use "nvim-lua/popup.nvim"
 	use 'folke/tokyonight.nvim'
+
+	use "hrsh7th/nvim-cmp"
+  use "hrsh7th/cmp-buffer"
+  use "hrsh7th/cmp-path"
+  use "hrsh7th/cmp-cmdline"
+	use 'saadparwaiz1/cmp_luasnip'
+
+
+  use "L3MON4D3/LuaSnip"
+  use "rafamadriz/friendly-snippets"
+
   if PACKER_BOOTSTRAP then
     require("packer").sync()
   end
