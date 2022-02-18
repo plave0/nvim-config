@@ -3,6 +3,7 @@ if not cmp_status_ok then
   return
 end
 
+
 local snip_status_ok, luasnip = pcall(require, "luasnip")
 if not snip_status_ok then
   return
@@ -24,7 +25,6 @@ local check_backspace = function()
   return col == 0 or vim.fn.getline("."):sub(col, col):match "%s"
 end
 
---   פּ ﯟ   some other good icons
 local kind_icons = { Text = "",
   Method = "m",
   Function = "",
@@ -110,6 +110,7 @@ cmp.setup {
       -- vim_item.kind = string.format('%s %s', kind_icons[vim_item.kind], vim_item.kind) -- This concatonates the icons with the name of the item kind
       vim_item.menu = ({
 				nvim_lsp = "[LSP]",
+				nvim_lua = "[NVIM]",
         luasnip = "[Snippet]",
         buffer = "[Buffer]",
         path = "[Path]",
@@ -118,6 +119,7 @@ cmp.setup {
     end,
   },
   sources = {
+		{ name = "nvim_lua" },
 		{ name = "nvim_lsp" },
     { name = "luasnip" },
     { name = "buffer" },
