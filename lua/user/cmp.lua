@@ -7,9 +7,7 @@ end
 local snip_status_ok, luasnip = pcall(require, "luasnip")
 if not snip_status_ok then
   return
-end
-
-local cmp_lsp_ok , cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
+end local cmp_lsp_ok , cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
 if not cmp_lsp_ok then
 	return
 end
