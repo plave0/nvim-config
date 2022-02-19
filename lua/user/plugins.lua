@@ -43,6 +43,7 @@ return packer.startup(function(use)
 	use "nvim-telescope/telescope.nvim"
 	use "nvim-treesitter/nvim-treesitter"
 	use "windwp/nvim-autopairs"
+	use 'lewis6991/gitsigns.nvim'
 
 	-- Snips
   use "L3MON4D3/LuaSnip"
