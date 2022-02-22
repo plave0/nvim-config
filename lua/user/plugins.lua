@@ -31,7 +31,7 @@ return packer.startup(function(use)
 
   use "wbthomason/packer.nvim"
   use "nvim-lua/popup.nvim"
-	use 'folke/tokyonight.nvim'
+	use 'kaicataldo/material.vim'
 	use 'nvim-lua/plenary.nvim'
 	use "hrsh7th/nvim-cmp"
   use "hrsh7th/cmp-buffer"
