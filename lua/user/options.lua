@@ -5,6 +5,7 @@ o.swapfile = false
 o.path = ".,,"
 o.termguicolors = true
 o.shiftwidth = 2
+o.expandtab = true
 o.tabstop = 2
 o.number = true
 o.wrap = false
