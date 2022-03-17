@@ -32,7 +32,9 @@ return packer.startup(function(use)
   use "wbthomason/packer.nvim"
   use "nvim-lua/popup.nvim"
 	use 'kaicataldo/material.vim'
-	use 'nvim-lua/plenary.nvim'
+  use 'Mofiqul/vscode.nvim'	
+  use "lunarvim/darkplus.nvim"
+  use 'nvim-lua/plenary.nvim'
 	use "hrsh7th/nvim-cmp"
   use "hrsh7th/cmp-buffer"
   use "hrsh7th/cmp-path"
