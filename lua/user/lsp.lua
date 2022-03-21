@@ -5,6 +5,12 @@ if not status_ok then
 	return
 end
 
+local status_ok, lsp_signature = pcall(require, "lsp_signature")
+if not status_ok then
+  vin.notify("lsp_signature could not load")
+  return
+end
+
 local on_attach = function(client, bufnr)
 	local opts = { noremap = true, silent = true }
 	vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
@@ -24,6 +30,16 @@ local on_attach = function(client, bufnr)
 		'<cmd>lua vim.diagnostic.open_float()<CR>', opts)
 
 end
+
+-- lsp signature setup
+
+lsp_signature.setup({
+  bind = true,
+  hint_enable = false,
+  handler_opt = {
+    border = "rounded"
+  }
+})
 
 -- lua lsp configuration
 
