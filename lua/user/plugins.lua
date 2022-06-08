@@ -32,6 +32,7 @@ return packer.startup(function(use)
   -- helper plugins
   use "nvim-lua/popup.nvim"
   use 'nvim-lua/plenary.nvim'
+  use 'kyazdani42/nvim-web-devicons' -- required by nvimtree
 
   -- plugin plugins
   use "wbthomason/packer.nvim"
@@ -51,6 +52,7 @@ return packer.startup(function(use)
 
   -- navigation
 	use "nvim-telescope/telescope.nvim"
+  use 'kyazdani42/nvim-tree.lua'
 
   -- git
 	use 'lewis6991/gitsigns.nvim'
