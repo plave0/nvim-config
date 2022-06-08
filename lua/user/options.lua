@@ -13,6 +13,7 @@ o.smartindent = true
 o.ignorecase = true
 o.signcolumn = "yes"
 o.updatetime = 200
+o.laststatus=3
 
 o.splitbelow = true
 o.splitright = true
