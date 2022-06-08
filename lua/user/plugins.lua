@@ -72,6 +72,7 @@ return packer.startup(function(use)
 
   -- qulity of life plugins
 	use "windwp/nvim-autopairs"
+  use 'folke/which-key.nvim'
 
   if PACKER_BOOTSTRAP then
     require("packer").sync()
