@@ -49,8 +49,3 @@ keymap("x", "J", ":move '>+1<CR>gv-gv", opts)
 keymap("x", "K", ":move '<-2<CR>gv-gv", opts)
 keymap("x", "<A-j>", ":move '>+1<CR>gv-gv", opts)
 keymap("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
-
--- Gitsign maps
-keymap("n", "<leader>hn", ":Gitsign next_hunk<cr>", opts)
-keymap("n", "<leader>hp", ":Gitsign prev_hunk<cr>", opts)
-keymap("n", "<leader>hh", ":Gitsign preview_hunk<cr>", opts)

@@ -21,3 +21,11 @@ which_key.register({
   }
 })
 
+which_key.register({
+    e = {"<cmd>NvimTreeToggle<cr>", "Toggle file explorer"},
+    h = {
+      n = {"<cmd>Gitsigns next_hunk<cr>", "Next hunk"},
+      p = {"<cmd>Gitsigns prev_hunk<cr>", "Prev hunk"},
+      h = {"<cnd>Gitsigns preview_hunk<cr>", "Preview hunk"}
+    }
+}, {mode = "n", prefix = "<leader>"} )
