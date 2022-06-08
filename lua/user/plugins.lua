@@ -65,6 +65,7 @@ return packer.startup(function(use)
 	use "nvim-treesitter/nvim-treesitter" -- better syntax highlight
 
   -- utilities
+  use "mechatroner/rainbow_csv" -- csv tool
 
   -- qulity of life plugins
 	use "windwp/nvim-autopairs"
