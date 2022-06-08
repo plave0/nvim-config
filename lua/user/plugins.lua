@@ -47,6 +47,7 @@ return packer.startup(function(use)
 	use "hrsh7th/cmp-nvim-lua"
 	use 'saadparwaiz1/cmp_luasnip'
   use "hrsh7th/cmp-nvim-lsp"
+  use "hrsh7th/cmp-nvim-lsp-signature-help"
 
   -- navigation
 	use "nvim-telescope/telescope.nvim"
