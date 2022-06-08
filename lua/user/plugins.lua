@@ -1,4 +1,4 @@
-local fn = vim.fn 
+local fn = vim.fn
 -- Automatically install packer
 local install_path = fn.stdpath "data" .. "/site/pack/packer/start/packer.nvim"
 if fn.empty(fn.glob(install_path)) > 0 then
@@ -29,10 +29,17 @@ end
 
 return packer.startup(function(use)
 
-  use "wbthomason/packer.nvim"
+  -- helper plugins
   use "nvim-lua/popup.nvim"
   use 'nvim-lua/plenary.nvim'
+
+  -- plugin plugins
+  use "wbthomason/packer.nvim"
+
+  -- color schemes
   use 'shaunsingh/nord.nvim'
+
+  -- cmp
 	use "hrsh7th/nvim-cmp"
   use "hrsh7th/cmp-buffer"
   use "hrsh7th/cmp-path"
@@ -40,19 +47,27 @@ return packer.startup(function(use)
 	use "hrsh7th/cmp-nvim-lua"
 	use 'saadparwaiz1/cmp_luasnip'
   use "hrsh7th/cmp-nvim-lsp"
+
+  -- navigation
 	use "nvim-telescope/telescope.nvim"
-	use "nvim-treesitter/nvim-treesitter"
-	use "windwp/nvim-autopairs"
+
+  -- git
 	use 'lewis6991/gitsigns.nvim'
   use {"ray-x/lsp_signature.nvim",}
 
-	-- Snips
+	-- snips
   use "L3MON4D3/LuaSnip"
   use "rafamadriz/friendly-snippets"
 
-	-- Lsp
+	-- lsp
 	use "neovim/nvim-lspconfig"
 	use "williamboman/nvim-lsp-installer"
+	use "nvim-treesitter/nvim-treesitter" -- better syntax highlight
+
+  -- utilities
+
+  -- qulity of life plugins
+	use "windwp/nvim-autopairs"
 
   if PACKER_BOOTSTRAP then
     require("packer").sync()
