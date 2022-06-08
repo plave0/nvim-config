@@ -56,7 +56,6 @@ return packer.startup(function(use)
 
   -- git
 	use 'lewis6991/gitsigns.nvim'
-  use {"ray-x/lsp_signature.nvim",}
 
 	-- snips
   use "L3MON4D3/LuaSnip"
