@@ -11,7 +11,6 @@ o.number = true
 o.wrap = false
 o.smartindent = true
 o.ignorecase = true
-o.showtabline = 2
 o.signcolumn = "yes"
 o.updatetime = 200
 
