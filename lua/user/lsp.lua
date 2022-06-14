@@ -1,17 +1,24 @@
-
-local status_ok, lsp_installer = pcall(require, "nvim-lsp-installer")
+local status_ok, lsp_installer, lspconfig, lsp_settings
+status_ok, lsp_installer = pcall(require, "nvim-lsp-installer")
 if not status_ok then
 		vim.notify("nvim-lsp-installer could not load")
 	return
 end
 
-local status_ok, lsp_signature = pcall(require, "lsp_signature")
+status_ok, lspconfig = pcall(require, "lspconfig")
 if not status_ok then
-  vin.notify("lsp_signature could not load")
-  return
+		vim.notify("lspconfig could not load")
+	return
 end
 
-local on_attach = function(client, bufnr)
+status_ok, lsp_settings = pcall(require, "user.lsp_settings")
+if not status_ok then
+		vim.notify("lsp settings could not load")
+	return
+end
+
+local on_attach = function(_,bufnr)
+
 	local opts = { noremap = true, silent = true }
 	vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
@@ -28,55 +35,25 @@ local on_attach = function(client, bufnr)
   --vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
 	vim.api.nvim_buf_set_keymap(bufnr, "n", "gl",
 		'<cmd>lua vim.diagnostic.open_float()<CR>', opts)
-
 end
 
--- lsp signature setup
 
-lsp_signature.setup({
-  bind = true,
-  hint_enable = false,
-  handler_opt = {
-    border = "rounded"
-  }
-})
+for _,server in ipairs(lsp_installer.get_installed_servers()) do
 
--- lua lsp configuration
+  if server.name == "sumneko_lua" then
 
-local runtime_path = vim.split(package.path, ';')
-table.insert(runtime_path, "lua/?.lua")
-table.insert(runtime_path, "lua/?/init.lua")
+    lspconfig[server.name].setup({
+       on_attach = on_attach,
+       settings = lsp_settings.lua_settings
+     })
 
-local lua_settings = {
-	settings = {
-    Lua = {
-      runtime = {
-        -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
-        version = 'LuaJIT',
-        -- Setup your lua path
-        path = runtime_path,
-      },
-      workspace = {
-        -- Make the server aware of Neovim runtime files
-        library = vim.api.nvim_get_runtime_file("", true),
-      },
-      -- Do not send telemetry data containing a randomized but unique identifier
-      telemetry = {
-        enable = false,
-      },
-    },
-  }
-}
+  else
 
--- nvim-lsp-installer of attaching lsp client
-lsp_installer.on_server_ready(function(server)
-    local opts = {
-			-- cmp_lsp_capabilities is a variable from cmp.lua
-			on_attach = on_attach, camabilities = cmp_lsp_capabilities
-		}
-		if server.name == "sumneko_lua" then
-			opts = vim.tbl_deep_extend("force", lua_settings, opts)
-			--table.insert(opts, lua_settings.settings)
-		end
-    server:setup(opts)
-end)
+    lspconfig[server.name].setup({
+      on_attach = on_attach,
+      settings = lsp_settings.default_settings
+    })
+
+  end
+
+end
