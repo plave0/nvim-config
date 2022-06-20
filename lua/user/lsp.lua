@@ -1,4 +1,5 @@
-local status_ok, lsp_installer, lspconfig, lsp_settings
+local status_ok, lsp_installer, lspconfig, lsp_settings, cmp_nvim_lsp
+
 status_ok, lsp_installer = pcall(require, "nvim-lsp-installer")
 if not status_ok then
 		vim.notify("nvim-lsp-installer could not load")
@@ -15,6 +16,12 @@ status_ok, lsp_settings = pcall(require, "user.lsp_settings")
 if not status_ok then
 		vim.notify("lsp settings could not load")
 	return
+end
+
+status_ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
+if not status_ok then
+  vim.notify("cmp lsp could not load")
+  return
 end
 
 local on_attach = function(_,bufnr)
@@ -37,6 +44,7 @@ local on_attach = function(_,bufnr)
 		'<cmd>lua vim.diagnostic.open_float()<CR>', opts)
 end
 
+local capabilities = cmp_nvim_lsp.update_capabilities(vim.lsp.protocol.make_client_capabilities())
 
 for _,server in ipairs(lsp_installer.get_installed_servers()) do
 
@@ -44,14 +52,16 @@ for _,server in ipairs(lsp_installer.get_installed_servers()) do
 
     lspconfig[server.name].setup({
        on_attach = on_attach,
-       settings = lsp_settings.lua_settings
+       settings = lsp_settings.lua_settings,
+       capabilities = capabilities
      })
 
   else
 
     lspconfig[server.name].setup({
       on_attach = on_attach,
-      settings = lsp_settings.default_settings
+      settings = lsp_settings.default_settings,
+      capabilities = capabilities
     })
 
   end
