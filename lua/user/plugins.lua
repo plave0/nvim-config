@@ -39,6 +39,7 @@ return packer.startup(function(use)
 
   -- color schemes
   use 'shaunsingh/nord.nvim'
+  use 'navarasu/onedark.nvim'
 
   -- cmp
 	use "hrsh7th/nvim-cmp"
